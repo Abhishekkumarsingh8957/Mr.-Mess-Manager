@@ -18,8 +18,8 @@ TECH STACKS:
 5.Mongodb.
 
 CONTRIBUTERS:
-1.Thaman Bharti.
-2.Vinay Kumar.
-3.Abhishek Kumar Singh.
+1.Thaman Bharti(20215153)
+2.Vinay Kumar(20215029)
+3.Abhishek Kumar Singh(20215006)
 
 Happy Dinning 😋😋😋
