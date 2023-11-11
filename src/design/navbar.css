@@ -1,0 +1,129 @@
+.container{
+    
+    background-image: url('https://cdn.pixabay.com/photo/2017/10/22/21/02/food-2879265_1280.jpg');
+}
+
+
+
+.title {
+    height: 7vh;
+    font-weight: bold;
+    font-size: 150%;
+    /* color: brown; */
+    font-family: cursive;
+    text-align: left; /* Align the text to the left */
+    padding-left: 20px; /* Add some left padding for spacing */
+    
+   margin-right: 200px;
+}
+
+
+.navbar {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 1.5cm;
+    background-color: rgb(154, 218, 154);
+    position:sticky;
+    /* background-color: rgb(168, 230, 168); */
+}
+
+.list-items {
+    list-style: none;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    position: relative;
+}
+
+.list-items li {
+    margin: 0 15px;
+    font-size: large;
+    font-weight: 500;
+    position: relative; /* Relative positioning for sub-list */
+}
+.list-items li:nth-child(1):hover{
+    color: brown;
+    cursor: pointer;
+}
+.list-items li:nth-child(2):hover{
+    color: brown;
+    cursor: pointer;
+}
+.list-items li:nth-child(3):hover{
+    color: brown;
+    cursor: pointer;
+}
+
+.list-items li:nth-child(3):hover .sub-list {
+    display: block;
+    cursor: pointer;
+}
+
+.sub-list {
+    height: 3.5cm;
+    text-align: center;
+    background-color: whitesmoke;
+    white-space: nowrap;
+    display: none;
+    position: absolute;
+    top: 100%; 
+    left: 0; 
+    border-radius: 5%;
+}
+
+.sub-list li {
+    display: block; 
+    margin: 0;
+    padding: 10px 0; 
+    transition: background-color 0.3s; 
+    border-radius: 5%;
+    color: black;
+    font-size:90%;
+}
+
+.sub-list li:hover {
+    background-color: rgba(165, 42, 42, 0.712); 
+}
+.image{
+   
+    background-image: url('https://cdn.pixabay.com/photo/2017/10/22/21/02/food-2879265_1280.jpg');
+    background-size: cover;
+    height: 100vh;
+}
+
+.feature-box {
+    box-shadow: 10px 9px rgba(165, 42, 42, 0.712);
+    padding-left: 20px;
+    height: 60vh;
+    width: 120vh;
+   border-radius: 2%;
+    margin-top: 8%;
+    transform: translateX(300px); /* Adjust the value according to how much you want to translate in the x-axis */
+}
+
+.parent-list{
+    display: block;
+    height: max-content;
+    border-radius: 5px;
+    margin-top: 2px;
+    width: 120px;
+    border: solid;
+    border-width: 2px;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.description-box{
+    height: 2cm;
+    width: 100vh;
+    border: solid;
+    border-width: 2px;
+    margin-top: 1px;
+    
+}
+.parent-list:hover{
+    cursor: pointer;
+}
+
+

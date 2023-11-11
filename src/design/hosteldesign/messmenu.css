@@ -1,0 +1,20 @@
+table {
+    border: 2px solid forestgreen;
+    width: 800px;
+    height: 50px;
+}
+ 
+th {
+    border-bottom: 1px solid black;
+    border: solid;
+    border-width: thin;
+}
+
+td {
+    height: 20px;
+    border: solid;
+    text-align: center;
+    width: 100px;
+    border-width: thin;
+    font-family: cursive;
+}

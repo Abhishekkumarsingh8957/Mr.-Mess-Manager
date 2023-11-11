@@ -1,0 +1,67 @@
+u:hover{
+    cursor: pointer;
+}
+
+.body{
+    background-color: rgb(51, 46, 46);
+    height: 100vh;
+    width: 100vw;
+    
+}
+h3 u{
+    float: right;
+    transform: translateX(-60px);
+    color: darkmagenta;
+    font-size: large;
+}
+
+.heading{
+   transform: translate(90vh,-2vw);
+
+}
+
+.complaint-box {
+    width: 80vw;
+    height: 70vh;
+    
+    background-image: url('https://static.vecteezy.com/system/resources/previews/023/849/209/non_2x/conceptual-illustration-of-people-complaint-center-or-inquiry-service-and-communication-online-communication-getting-help-information-answering-questions-illustration-on-a-white-background-vector.jpg');
+    background-size: cover;
+    transform: translate(100px, 40px);
+    max-height: 70vh; /* Set a maximum height for the box */
+    overflow-y: auto;
+}
+
+
+.complaint-typer{
+    width: 50vw;
+    height: 20px;
+    transform: translateX(50vh) ;
+    display: flex;
+}
+
+.comment-section {
+    width: 50vw;
+    min-height: 40px;
+    padding: 10px;
+    border-radius: 20px; /* Adjust the border-radius for a rounded appearance */
+    border: 2px solid #ccc; /* Border color */
+    margin-top: 10px;
+    align-self: center;
+    transform: translate(32vh, 0);
+    background-color: #f1f1f1; /* Background color */
+    position: relative; /* Needed for the pseudo-element */
+    
+  }
+  
+  .comment-sender{
+    font-size:60%;
+  }
+
+  .vote-btn{
+    float: right;
+    margin-top: 2%;
+  }
+
+  .up-btn,.down-btn:hover{
+         cursor: pointer;
+  }
