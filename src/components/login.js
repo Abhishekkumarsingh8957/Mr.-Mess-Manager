@@ -1,12 +1,20 @@
-import React from 'react'
-
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import "../design/login.css";
+import Student from './homepage/student';
 
 
 const Login = () => {
+
+          
+
+ 
+
+
+
   return (
 
-
+  
 
     <form >
     <div className="imgcontainer">
@@ -17,7 +25,7 @@ const Login = () => {
       <input
         type="text"
         placeholder="Enter Username"
-       
+        
       />
         <label htmlFor="name"><b>Name</b></label>
       <input
@@ -46,7 +54,7 @@ const Login = () => {
         
       />
 
-      <button type="submit">Login</button>
+      <button type="submit" >Login</button>
 
       <label>
         <input
@@ -65,9 +73,9 @@ const Login = () => {
         Forgot <a href="#">password?</a>
       </span>
     </div>
-  </form>
-
-
+   </form>
+   
+ 
 
 
 

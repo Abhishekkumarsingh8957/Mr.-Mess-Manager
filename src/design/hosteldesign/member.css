@@ -1,0 +1,19 @@
+.Member-box{
+    max-height: 70vh;
+    width: 20vw;
+    transform: translate(0,3vw);
+    border: solid;
+    float: left;
+    overflow-y: scroll;
+    border-left: none;
+    border-width: 2px;
+}
+.nth-member{
+    width: 100%;
+    border-bottom: solid 1px white;
+    background-color: wheat;
+    height: 5vh;
+   
+    font-size: large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}

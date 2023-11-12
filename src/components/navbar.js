@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../design/navbar.css'; // Import your CSS file for styling if needed
+import '../design/navbar.css'; 
 import Login from './login';
 import LoginCW from './loginCW';
 import LoginAccnt from './loginAccnt';
@@ -8,6 +8,7 @@ import {AiFillHome} from 'react-icons/ai'
 import {FcAbout}from 'react-icons/fc'
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
+import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const description = [
@@ -15,7 +16,7 @@ const Navbar = () => {
     { Person: "ChiefWarden", Feat1: "some feature" },
     { Person: "Accountant", Feat1: "some feature" }
   ];
-
+    const Navigate=useNavigate();
   const [show, setShow] = useState(Array(description.length).fill(false));
 
   const showDesc = (index) => {

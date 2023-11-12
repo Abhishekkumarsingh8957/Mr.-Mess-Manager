@@ -21,33 +21,39 @@ h3 u{
 }
 
 .complaint-box {
-    width: 80vw;
+    width: 60vw;
     height: 70vh;
-    
-    background-image: url('https://static.vecteezy.com/system/resources/previews/023/849/209/non_2x/conceptual-illustration-of-people-complaint-center-or-inquiry-service-and-communication-online-communication-getting-help-information-answering-questions-illustration-on-a-white-background-vector.jpg');
+    border-radius: 2%;
+    background-color:rgb(157, 237, 240);
     background-size: cover;
-    transform: translate(100px, 40px);
+    /* transform: translate(10vw, 8vh); */
+    float: right;
+    transform: translate(-10vh,3vw);
     max-height: 70vh; /* Set a maximum height for the box */
     overflow-y: auto;
 }
 
 
 .complaint-typer{
-    width: 50vw;
-    height: 20px;
-    transform: translateX(50vh) ;
-    display: flex;
+    width: 80%;
+    margin-left: 10%;
+    min-height: 40px; /* Set a minimum height */
+    box-sizing: border-box;
+    padding: 10px; /* Adjust padding as needed */
+    position: absolute;
+    bottom: 5px;
+    overflow-y: scroll;
 }
 
 .comment-section {
-    width: 50vw;
+    width: 40vw;
     min-height: 40px;
     padding: 10px;
     border-radius: 20px; /* Adjust the border-radius for a rounded appearance */
     border: 2px solid #ccc; /* Border color */
     margin-top: 10px;
     align-self: center;
-    transform: translate(32vh, 0);
+    transform: translate(20vh, 0);
     background-color: #f1f1f1; /* Background color */
     position: relative; /* Needed for the pseudo-element */
     
