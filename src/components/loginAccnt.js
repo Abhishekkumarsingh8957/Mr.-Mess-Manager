@@ -1,12 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function LoginAccnt() {
+    const navigate=useNavigate();
+    const check=()=>{
+      navigate('/accountant');
+    }
+
   return (
     <form >
     <div className="imgcontainer">
       <img src="img_avatar2.png" alt="Avatar" className="avatar" />
     </div>
-    <div className="container">
+    <div className="form-container">
       <label htmlFor="uname"><b>Username</b></label>
       <input
         type="text"
@@ -40,7 +46,7 @@ export default function LoginAccnt() {
       />
 
 
-      <button type="submit">Login</button>
+      <button type="submit" onClick={check}>Login</button>
 
       <label>
         <input
@@ -51,7 +57,7 @@ export default function LoginAccnt() {
       </label>
     </div>
 
-    <div className="container" style={{ backgroundColor: '#f1f1f1' }}>
+    <div className="form-container" style={{ backgroundColor: '#f1f1f1' }}>
       <button type="button" className="cancelbtn">
         Cancel
       </button>

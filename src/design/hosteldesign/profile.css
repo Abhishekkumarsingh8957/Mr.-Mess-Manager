@@ -10,12 +10,12 @@
     
    
 }
-.profile-photo{
+/* .profile-photo{
     width: 80%;
     height: 20vh;
     align-items: center;
     margin-left: 25%;
-}
+} */
 @keyframes slider {
     0%{
         width: 0vh;
@@ -52,12 +52,38 @@
 }
 .profile-box-id {
     width: 80%;
-    
-    
     margin-top: 30%;
     margin-left: 5%;
     height: 5vh;
     border: solid;
     border-radius: .5px;
     border-width: 1px;
+}
+
+@media only screen and (max-width:803px) {
+    .profile-box {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        padding: 10px;
+        height: max-content;
+        border: none;
+        animation: none;
+
+}
+.profile-box-name,.profile-box-id,.profile-box-reg{
+   
+    height: max-content;
+    width: 30%;
+    display: inline;
+    display: none;
+    bottom: 0;
+    border: none;
+    color: white;
+} 
+
+
+   
+    
 }

@@ -1,0 +1,66 @@
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+tr {
+    background-color: #f5f5f5;
+}
+
+.edit-btn, .save-btn, .cancel-btn {
+    background-color: #008CBA;
+    color: white;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn:hover, .save-btn:hover, .cancel-btn:hover {
+    background-color: #0077A3;
+}
+
+.save-btn, .cancel-btn {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.center {
+    text-align: center;
+}
+
+
+
+.mess-menu-title {
+    font-size: 25px;
+    color: #3498db;
+    text-align: center;
+    margin: 20px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: bold;
+   
+    padding-bottom: 5px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .mess-menu-title:hover {
+    color: #e74c3c;
+  }
+  
+  table{
+    transform: translate(0,-2vh);
+  }

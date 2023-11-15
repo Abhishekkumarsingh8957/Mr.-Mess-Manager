@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import "../design/login.css";
 import Student from './homepage/student';
 
 
-const Login = () => {
-
+const Login = ({sendhide}) => {
+    
+     const navigate=useNavigate();
           
-
- 
+    const [hide,setHide]=useState(false);
+   const check=()=>{
+    navigate('/student');
+   }
 
 
 
@@ -20,7 +24,7 @@ const Login = () => {
     <div className="imgcontainer">
       <img src="img_avatar2.png" alt="Avatar" className="avatar" />
     </div>
-    <div className="container">
+    <div className="form-container">
       <label htmlFor="uname"><b>Username</b></label>
       <input
         type="text"
@@ -54,7 +58,7 @@ const Login = () => {
         
       />
 
-      <button type="submit" >Login</button>
+      <button type="submit" onClick={check}>Login</button>
 
       <label>
         <input
@@ -65,8 +69,9 @@ const Login = () => {
       </label>
     </div>
 
-    <div className="container" style={{ backgroundColor: '#f1f1f1' }}>
-      <button type="button" className="cancelbtn">
+    <div className="form-container" style={{ backgroundColor: '#f1f1f1' }}>
+      <button type="button" className="cancelbtn" onClick={()=>{setHide(!hide);
+      sendhide=hide}}>
         Cancel
       </button>
       <span className="psw">

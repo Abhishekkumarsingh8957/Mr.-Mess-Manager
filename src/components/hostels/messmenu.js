@@ -61,7 +61,7 @@ export default function Messmenu() {
   ];
 
   return (
-    <div>
+    <div className='messmenu-div'>
       <table>
         <thead>
           <tr>
