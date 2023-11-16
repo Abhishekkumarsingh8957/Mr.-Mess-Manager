@@ -6,6 +6,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { AiFillHome } from 'react-icons/ai';
 import { FcAbout } from 'react-icons/fc';
 import { Sidebar, Menu } from 'react-pro-sidebar';
+// import 'react-pro-sidebar/dist/css/styles.css';
 import { Link, useNavigate } from 'react-router-dom';
 export default function Chiefwarden() {
   
@@ -44,10 +45,10 @@ export default function Chiefwarden() {
             
           </Menu>
         </Sidebar>
-       <Link to={'/hostelCA'}> <div className='hostelBox1'>Hostel A</div></Link>
-       <Link to={'/hostelCA'}><div className='hostelBox2'>Hostel B</div></Link>
-       <Link to={'/hostelCA'}><div className='hostelBox3'>Hostel C</div></Link>
-       <Link to={'/hostelCA'}><div className='hostelBox4'>Hostel D</div></Link>
+       <Link to={'/hostel'}> <div className='hostelBox1'>Hostel A</div></Link>
+       <Link to={'/hostel'}><div className='hostelBox2'>Hostel B</div></Link>
+       <Link to={'/hostel'}><div className='hostelBox3'>Hostel C</div></Link>
+       <Link to={'/hostel'}><div className='hostelBox4'>Hostel D</div></Link>
         <Marquee direction='reverse'>
           <div className='marquee-content'>
             Select Hostel {student.name}

@@ -3,39 +3,44 @@ import { useNavigate } from 'react-router-dom';
 import "../design/login.css";
 // import Student from './homepage/student';
 import axios from 'axios';
+import {toast} from 'react-toastify'
 
 
-
-const Loginw = () => {
+const Registera = () => {
 
  const [username,setUsername]=useState("");
- 
+ const [name,setName]=useState("");
+ const [cont,setCont]=useState("");
+ const [hostel,setHostel]=useState("");
  const [password,setPassword]=useState("");
 
  const navigate=useNavigate();
 
  const handleSubmit= async (e)=>{
   e.preventDefault();
-  console.log(username,password);
-  // toast.success('Registered Successfully')
+  console.log(username,name,cont,hostel,password);
+  toast.success('Registered Successfully')
 
   try {
-    const res = await axios.post('/api/v1/auth/logina', {
+    const res = await axios.post('/api/v1/auth/registera', {
       username,
+      name,
+      cont,
+      hostel,
       
       password
     });
     if (res.data.success) {
-        // toast.success(res.data.message);
+        toast.success(res.data.message);
       navigate("/");
 
       console.log('successful')
     } else {
-      // toast.error(res.data.message);
+      toast.error(res.data.message);
     }
   } catch (error) {
     console.log(error);
-    // toast.error("Something went wrong");
+    toast.error("Something went wrong");
   }
 
 };
@@ -65,6 +70,34 @@ const Loginw = () => {
       />
 
 
+        <label htmlFor="name"><b>Name</b></label>
+      <input
+        type="text"
+        placeholder="Enter name"
+        value={name}
+        onChange={(e)=>setName(e.target.value)}
+        required
+       
+      />
+        <label htmlFor="reg. no"><b>Conatct No.</b></label>
+      <input
+        type="text"
+        placeholder="Enter Registration Number "
+        value={cont}
+        onChange={(e)=>setCont(e.target.value)}
+        required
+       
+      />
+
+<label htmlFor="psw"><b>Hostel</b></label>
+      <input
+        type="text"
+        placeholder="Enter Hostel Name"
+        value={hostel}
+        onChange={(e)=>setHostel(e.target.value)}
+        required
+        
+      />
 
       <label htmlFor="psw"><b>Password</b></label>
       <input
@@ -76,7 +109,7 @@ const Loginw = () => {
         
       />
 
-      <button type="submit" >LOGIN</button>
+      <button type="submit" >Register</button>
 
       <label>
         <input
@@ -105,4 +138,4 @@ const Loginw = () => {
   )
 }
 
-export default Loginw
+export default Registera

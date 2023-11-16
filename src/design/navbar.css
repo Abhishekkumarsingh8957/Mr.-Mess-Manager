@@ -1,7 +1,5 @@
 .container{
-    width: 100vw;
-    position: relative;
-    background-size: cover;
+    
     background-image: url('https://cdn.pixabay.com/photo/2017/10/22/21/02/food-2879265_1280.jpg');
 }
 
@@ -10,12 +8,13 @@
 .title {
     height: 7vh;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 150%;
     /* color: brown; */
-    margin-top: 1.65vh;
+    font-family: cursive;
     text-align: left; /* Align the text to the left */
-    padding-left: 2vh; /* Add some left padding for spacing */
-    font-family: 'Arial', sans-serif;
+    padding-left: 20px; /* Add some left padding for spacing */
+    
+   margin-right: 200px;
 }
 
 
@@ -23,19 +22,15 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    height: 10vh;
+    height: 1.5cm;
     background-color: rgb(154, 218, 154);
     position:sticky;
-    top: 0;
-    width: 100%;
-   
-    
     /* background-color: rgb(168, 230, 168); */
 }
 
 .list-items {
     list-style: none;
-    padding: 2vw;
+    padding: 20px;
     text-align: center;
     display: flex;
     position: relative;
@@ -43,8 +38,7 @@
 
 .list-items li {
     margin: 0 15px;
-    margin-bottom: 2px;
-    font-size:1em;
+    font-size: large;
     font-weight: 500;
     position: relative; /* Relative positioning for sub-list */
 }
@@ -61,14 +55,23 @@
     cursor: pointer;
 }
 
+.list-items li:nth-child(4):hover{
+    color: brown;
+    cursor: pointer;
+}
+
+.list-items li:nth-child(4):hover .sub-list {
+    display: block;
+    cursor: pointer;
+}
+
 .list-items li:nth-child(3):hover .sub-list {
     display: block;
     cursor: pointer;
 }
 
-
 .sub-list {
-    height: 21vh;
+    height: 3.5cm;
     text-align: center;
     background-color: whitesmoke;
     white-space: nowrap;
@@ -83,42 +86,38 @@
     display: block; 
     margin: 0;
     padding: 10px 0; 
-   
+    transition: background-color 0.3s; 
     border-radius: 5%;
     color: black;
     font-size:90%;
 }
 
 .sub-list li:hover {
-    display: block;
     background-color: rgba(165, 42, 42, 0.712); 
 }
 .image{
-    width: 100vw;
+   
     background-image: url('https://cdn.pixabay.com/photo/2017/10/22/21/02/food-2879265_1280.jpg');
     background-size: cover;
     height: 100vh;
 }
 
 .feature-box {
-    box-shadow: .5vw .5vw rgba(165, 42, 42, 0.712);
+    box-shadow: 10px 9px rgba(165, 42, 42, 0.712);
     padding-left: 20px;
     height: 60vh;
-    width: 50vw;
-   border-radius: .5vw;
-   border-width: 1vw;
+    width: 120vh;
+   border-radius: 2%;
     margin-top: 8%;
-    transform: translateX(25vw); /* Adjust the value according to how much you want to translate in the x-axis */
+    transform: translateX(300px); /* Adjust the value according to how much you want to translate in the x-axis */
 }
-
-
 
 .parent-list{
     display: block;
     height: max-content;
     border-radius: 5px;
     margin-top: 2px;
-    width: 15vw;
+    width: 120px;
     border: solid;
     border-width: 2px;
     text-align: center;
@@ -126,123 +125,15 @@
 }
 
 .description-box{
-    height: 12vh;
-    width: 45vw;
+    height: 2cm;
+    width: 100vh;
     border: solid;
     border-width: 2px;
     margin-top: 1px;
-    animation: slidedown .2s 1 linear;
-}
-@keyframes slidedown {
-    0%{
-        height: 0vh;
-    } 
-    100%{
-        height: 15vh;
-    }
-
+    
 }
 .parent-list:hover{
     cursor: pointer;
 }
 
 
-/* Your existing styles */
-
-@media only screen and (max-width: 600px) {
-  .navbar {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .list-items {
-    display: none; /* Hide the list items by default */
-    width: 100%;
-    text-align: center;
-  }
-
-  .list-items.active {
-    display: flex; /* Display the list items when the navbar is active */
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .list-items li {
-    margin-bottom: 10px;
-  }
-
-  .list-items li ul {
-    display: none;
-    width: 100%;
-  }
-
-  .list-items li:hover ul {
-    display: block;
-  }
-}
-/* Your existing styles */
-
-@media only screen and (max-width: 600px) {
-    .navbar {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .list-items {
-      display: flex; /* Display the list items by default on small screens */
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-  
-    .list-items li {
-      margin-bottom: 10px;
-    }
-  
-    .list-items li ul {
-      display: none;
-      width: 100%;
-    }
-  
-    .list-items li:hover ul {
-      display: block;
-    }
-  }
-
-  @media only screen and (max-width: 573px) {
-    .navbar {
-      flex-direction: column;
-      align-items: center;
-      height: 50vh;
-    }
-  
-    .list-items {
-      display: flex; /* Display the list items by default on small screens */
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-      
-    }
-    .sub-list{
-        height: 30vh;
-    }
-  
-    .list-items li {
-      margin-bottom: 10px;
-      
-    }
-  
-    .list-items li ul {
-      display: none;
-      width: 100%;
-    }
-  
-    .list-items li:hover ul {
-      display: block;
-    }
-
-    .feature-box{
-        display: none;
-    }
-  }
-  

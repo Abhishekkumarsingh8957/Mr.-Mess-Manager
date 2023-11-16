@@ -1,42 +1,20 @@
-.messmenu-div{
-    overflow: scroll;
-    max-height: 100vh;
-    max-width: 100vw;
-}
-
 table {
     border: 2px solid forestgreen;
-    width: 100%;
-    max-width: 800px;
-    margin: 0 auto; /* Center the table */
-   
-    
+    width: 800px;
+    height: 50px;
 }
-
-th, td {
+ 
+th {
+    border-bottom: 1px solid black;
     border: solid;
     border-width: thin;
 }
 
-th {
-    border-bottom: 1px solid black;
-    text-align: center;
-    font-family: cursive;
-}
-
 td {
+    height: 20px;
+    border: solid;
     text-align: center;
+    width: 100px;
+    border-width: thin;
     font-family: cursive;
-}
-
-@media only screen and (max-width: 600px) {
-    table {
-        width: 100%;
-    }
-
-    th, td {
-        width: auto;
-        display: block;
-        box-sizing: border-box;
-    }
 }

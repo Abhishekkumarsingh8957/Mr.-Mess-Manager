@@ -1,8 +1,7 @@
 .body-student{
     background-color: rgb(51, 46, 46);
     height: 100vh;
-    min-width: 100vw;
-    overflow-y: scroll;
+    width: 100vw;
 }
 .hostelBox1,.hostelBox2,.hostelBox3,.hostelBox4{
     border: 1px solid #ccc;
@@ -56,3 +55,4 @@
     color: blueviolet;
     margin-top: 120px;
 }
+

@@ -5,23 +5,27 @@ import "../design/login.css";
 import axios from 'axios';
 
 
-
-const Loginw = () => {
+const Registerw = () => {
 
  const [username,setUsername]=useState("");
- 
+ const [name,setName]=useState("");
+ const [cont,setCont]=useState("");
+ const [hostel,setHostel]=useState("");
  const [password,setPassword]=useState("");
 
  const navigate=useNavigate();
 
  const handleSubmit= async (e)=>{
   e.preventDefault();
-  console.log(username,password);
+  console.log(username,name,cont,hostel,password);
   // toast.success('Registered Successfully')
 
   try {
-    const res = await axios.post('/api/v1/auth/logina', {
+    const res = await axios.post('/api/v1/auth/registerw', {
       username,
+      name,
+      cont,
+      hostel,
       
       password
     });
@@ -65,6 +69,34 @@ const Loginw = () => {
       />
 
 
+        <label htmlFor="name"><b>Name</b></label>
+      <input
+        type="text"
+        placeholder="Enter name"
+        value={name}
+        onChange={(e)=>setName(e.target.value)}
+        required
+       
+      />
+        <label htmlFor="reg. no"><b>Conatct No.</b></label>
+      <input
+        type="text"
+        placeholder="Enter Registration Number "
+        value={cont}
+        onChange={(e)=>setCont(e.target.value)}
+        required
+       
+      />
+
+<label htmlFor="psw"><b>Hostel</b></label>
+      <input
+        type="text"
+        placeholder="Enter Hostel Name"
+        value={hostel}
+        onChange={(e)=>setHostel(e.target.value)}
+        required
+        
+      />
 
       <label htmlFor="psw"><b>Password</b></label>
       <input
@@ -76,7 +108,7 @@ const Loginw = () => {
         
       />
 
-      <button type="submit" >LOGIN</button>
+      <button type="submit" >Register</button>
 
       <label>
         <input
@@ -105,4 +137,4 @@ const Loginw = () => {
   )
 }
 
-export default Loginw
+export default Registerw

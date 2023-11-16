@@ -8,9 +8,6 @@ u:hover{
     width: 100vw;
     
 }
-.profile-link{
-  display: none;
-}
 h3 u{
     float: right;
     transform: translateX(-60px);
@@ -29,62 +26,36 @@ h3 u{
     border-radius: 2%;
     background-color:rgb(157, 237, 240);
     background-size: cover;
-    position: relative;
+    /* transform: translate(10vw, 8vh); */
     float: right;
     transform: translate(-10vh,3vw);
-    max-height: 70vh; 
+    max-height: 70vh; /* Set a maximum height for the box */
     overflow-y: auto;
-   
 }
 
 
-.complaint-typer {
-    width: 40%;
-    float: right;
-    margin-right: 22%;
-    min-height: 40px;
+.complaint-typer{
+    width: 80%;
+    margin-left: 10%;
+    min-height: 40px; /* Set a minimum height */
     box-sizing: border-box;
-    padding: 10px;
-    position: sticky;
-    top: 10%; /* Adjust the sticky position */
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 10px; /* Adjust padding as needed */
+    position: absolute;
+    bottom: 5px;
+    overflow-y: scroll;
 }
-
-.complaint-typer textarea {
-    width: 100%;
-    box-sizing: border-box;
-    padding: 8px;
-    margin-top: 8px;
-    resize: none; /* Disable textarea resizing */
-}
-
-.complaint-typer button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.complaint-typer button:hover {
-    background-color: #45a049;
-}
-
 
 .comment-section {
     width: 40vw;
     min-height: 40px;
     padding: 10px;
-    border-radius: 20px; 
-    border: 2px solid #ccc; 
+    border-radius: 20px; /* Adjust the border-radius for a rounded appearance */
+    border: 2px solid #ccc; /* Border color */
     margin-top: 10px;
     align-self: center;
     transform: translate(20vh, 0);
-    background-color: #f1f1f1; 
-    position: relative; 
+    background-color: #f1f1f1; /* Background color */
+    position: relative; /* Needed for the pseudo-element */
     
   }
   
@@ -99,62 +70,4 @@ h3 u{
 
   .up-btn,.down-btn:hover{
          cursor: pointer;
-  }
-
-  ::-webkit-scrollbar {
-    width: 10px;
-  }
-  
-  ::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-  
-  ::-webkit-scrollbar-thumb {
-    background-color: #888;
-    border-radius: 6px;
-  }
-  
-  ::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-  
-
-  @media screen and (max-width:803px) {
-
-    .complaint-typer{
-      float: left;
-      margin-left: 30%;
-    }
-
-     .comment-section{
-      height: 10vh;
-     }
-    
-  }
-
-  @media screen and (max-width:561px) {
-
-    .complaint-box{
-      width: 110vw;
-      height: 100vh;
-      margin-top: 10vh;
-      float: none;
-    }
-    .comment-section{
-      margin-left: 5vw;
-      width: 60vw;
-    }
-    .complaint-typer{
-      width: 50vw;
-      margin-bottom: 10vh;
-     float: right;
-     margin-right: 25vw;
-    }
-    .body-student{
-      background-color: rgb(51, 46, 46);
-      height: 160vh;
-    }
-    .profile-link{
-      display: block;
-    }
   }
