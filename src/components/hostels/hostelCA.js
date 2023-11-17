@@ -7,7 +7,7 @@ import { AiFillHome } from 'react-icons/ai';
 import { BiSolidUpvote, BiSolidDownvote } from 'react-icons/bi';
 import { FcAbout } from 'react-icons/fc';
 import { RiLogoutCircleFill } from 'react-icons/ri';
-import { FaEdit } from "react-icons/fa";
+import { FaEdit,FaDatabase } from "react-icons/fa";
 import { RxHamburgerMenu } from 'react-icons/rx';
 import '../../design/homepagedesign/Student.css';
 import '../../design/hosteldesign/hostel.css';
@@ -19,31 +19,35 @@ import Profile from '../profile';
 
 
 export default function HostelCA() {
-    const student = { name: "User", reg: 20215153, hostel: "Hostelname" };
-    const navigate = useNavigate();
-    const [show, setShow] = useState(false);
-  
-    const comments = [
-      { comment: "Koi to veg biryani hatao pls", time: "5:10am", sendername: "sender 1" },
-      { comment: "Haa yaar usko jagah daal chawal rakhdo", time: Number, sendername: "sender 2" },
-      
-    ];
-  
-    const [comment, setComment] = useState({
-      comment: "",
-      time: null,
-      sendername: student.name,
-    });
-  
-    const handleComment = (e) => {
-      setComment({
-        ...comment,
-        comment: e.target.value,
+  const student = { name: "User", reg: 20215153, hostel: "Hostelname" };
+  const navigate = useNavigate();
+  const [show, setShow] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [newComment, setNewComment] = useState({
+    comment: "",
+    time: null,
+    sendername: student.name,
+  });
+
+  useEffect(() => {
+    axios.get('https://64bb931f7b33a35a44467b38.mockapi.io/comments')
+      .then(response => {
+        setComments(response.data);
+      })
+      .catch(error => {
+        console.error(error);
       });
-    };
-    
+  }, []);
+
+  const handleComment = (e) => {
+    setNewComment({
+      ...newComment,
+      comment: e.target.value,
+    });
+  };
+
   const handleSend = () => {
-    comment.time = new Date().toLocaleDateString('en-IN', {
+    newComment.time = new Date().toLocaleDateString('en-IN', {
       year: 'numeric',
       month: 'short',
       day: 'numeric',
@@ -51,7 +55,20 @@ export default function HostelCA() {
       minute: 'numeric',
       hour12: true,
     });
-  }
+
+    axios.post('https://64bb931f7b33a35a44467b38.mockapi.io/comments', newComment)
+      .then(response => {
+        setComments([...comments, newComment]);
+        setNewComment({
+          comment: "",
+          time: null,
+          sendername: student.name,
+        });
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  };
     const showHandler = () => {
         setShow(!show);
       };
@@ -67,6 +84,10 @@ export default function HostelCA() {
           <li>
             <Link to={'/Emessmenu'}><u>EditMessMenu</u></Link>
             <FaEdit size={22}/>
+          </li>
+          <li>
+            <u >StudentData</u>
+            <FaDatabase />
           </li>
           <li onClick={() => { navigate('/'); console.log("gobck"); }}>
             <u>Logout</u>
@@ -101,7 +122,7 @@ export default function HostelCA() {
           className='complaint-typer'
           placeholder='Type complaint or any feedback and press Enter'
           onChange={handleComment}
-          value={comment.comment}
+          value={newComment.comment}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
               handleSend(e.key);
@@ -120,6 +141,6 @@ const popUpstyle = {
   borderRadius: '8px',
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
   background: '#fff',
-  overflowY: 'auto', // Add this line to make the content scrollable
+  overflow: 'auto', // Add this line to make the content scrollable
 };
 

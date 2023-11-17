@@ -13,7 +13,7 @@ export default function Member() {
         
         {
           members.map((member, index) => (
-            <div key={index} className='nth-member'><BsFillFilePersonFill/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{member}</div>
+            <div key={index} className='nth-member'>{member}</div>
           ))
         }
       </div>

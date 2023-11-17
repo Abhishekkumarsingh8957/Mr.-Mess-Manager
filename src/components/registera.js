@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import "../design/login.css";
 // import Student from './homepage/student';
 import axios from 'axios';
-import {toast} from 'react-toastify'
+
 
 
 const Registera = () => {
@@ -19,8 +19,7 @@ const Registera = () => {
  const handleSubmit= async (e)=>{
   e.preventDefault();
   console.log(username,name,cont,hostel,password);
-  toast.success('Registered Successfully')
-
+  
   try {
     const res = await axios.post('/api/v1/auth/registera', {
       username,
@@ -31,17 +30,17 @@ const Registera = () => {
       password
     });
     if (res.data.success) {
-        toast.success(res.data.message);
-      navigate("/");
+      // toast.success(res.data.message);
+    navigate("/");
 
-      console.log('successful')
-    } else {
-      toast.error(res.data.message);
-    }
-  } catch (error) {
-    console.log(error);
-    toast.error("Something went wrong");
+    console.log('successful')
+  } else {
+    // toast.error(res.data.message);
   }
+} catch (error) {
+  console.log(error);
+  // toast.error("Something went wrong");
+}
 
 };
 
@@ -58,7 +57,7 @@ const Registera = () => {
     <div className="imgcontainer">
       <img src="img_avatar2.png" alt="Avatar" className="avatar" />
     </div>
-    <div className="container">
+    <div className="form-container">
       <label htmlFor="uname"><b>Username</b></label>
       <input
         type="text"
@@ -121,7 +120,7 @@ const Registera = () => {
       </label>
     </div>
 
-    <div className="container" style={{ backgroundColor: '#f1f1f1' }}>
+    <div className="form-container" style={{ backgroundColor: '#f1f1f1' }}>
       <button type="button" className="cancelbtn" >
         Cancel
       </button>

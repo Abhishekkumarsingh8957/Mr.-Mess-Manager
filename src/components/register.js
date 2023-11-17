@@ -57,7 +57,7 @@ const Register = () => {
     <div className="imgcontainer">
       <img src="img_avatar2.png" alt="Avatar" className="avatar" />
     </div>
-    <div className="container">
+    <div className="form-container">
       <label htmlFor="uname"><b>Username</b></label>
       <input
         type="text"
@@ -120,7 +120,7 @@ const Register = () => {
       </label>
     </div>
 
-    <div className="container" style={{ backgroundColor: '#f1f1f1' }}>
+    <div className="form-container" style={{ backgroundColor: '#f1f1f1' }}>
       <button type="button" className="cancelbtn" >
         Cancel
       </button>

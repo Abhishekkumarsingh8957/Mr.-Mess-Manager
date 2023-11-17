@@ -9,10 +9,9 @@ import Chiefwarden from './components/homepage/chiefwarden';
 import { RouterProvider,createBrowserRouter } from 'react-router-dom';
 import Accountant from './components/homepage/Accountant';
 import HostelA from './components/hostels/hostelA';
-import Register from './components/register';
-import Registerw from './components/registerw';
-import Registera from './components/registera';
-import Login from './components/login';
+import Emessmenu from './components/hostels/Emessmenu';
+import HostelCA from './components/hostels/hostelCA';
+import Calorie from './components/calorie/calorie';
 
 
 const router=createBrowserRouter([{
@@ -24,26 +23,25 @@ const router=createBrowserRouter([{
 },{
   path:'/hostel',
   element:<HostelA/>
-},{
-  path:'/register',
-  element:<Register/>
 },
-{
-  path:'/registerw',
-  element:<Registerw/>
-},
-{
-  path:'/registera',
-  element:<Registera/>
-},
-{
-  path:'/login',
-  element:<Login/>
-},
-
 {
   path:'/student',
   element:<Student/>
+}
+,{
+  path:'/Emessmenu',
+  element:<Emessmenu/>
+},{
+  path:'/hostelCA',
+  element:<HostelCA/>
+},
+{
+  path:'/accountant',
+  element:<Accountant/>
+}
+,{
+    path:'/checkcalorie',
+    element:<Calorie/>
 }])
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -1,0 +1,63 @@
+.calorie-body{
+    background-color: rgb(51, 46, 46);
+    height: 110vh;
+}
+
+
+.calorie-box {
+    height: 70vh;
+    width: 60vw;
+    padding-top: 2vh;
+    padding-left: 5vh;
+    transform: translate(40vh, 0);
+    padding-left: 5vh;
+    margin: 0 auto;
+    background-color: whitesmoke;
+    border-radius: 2px;
+    
+}
+
+.add-sub {
+    width: max-content;
+    font-size: 14px;
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.btn-container {
+    float: right;
+    margin-right: 15vw;
+}
+
+.result {
+    text-align: center;
+    margin-top: 2vh;
+    font-family: fantasy;
+    font-size: larger;
+}
+
+/* Responsive Styles */
+@media only screen and (min-width: 769px) {
+    .calorie-box {
+        width: 80vw;
+        transform: translate(0, 0);
+        padding-left: 2vh;
+    }
+
+    .btn-container {
+        margin-right: 5vw;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .calorie-box {
+        width: 70vw;
+        padding-left: 1vh;
+        transform: translate(0, 0);
+    }
+
+    .btn-container {
+        margin-right: 2vw;
+    }
+}
