@@ -6,10 +6,13 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { AiFillHome } from 'react-icons/ai';
 import { FcAbout } from 'react-icons/fc';
 import { Sidebar, Menu } from 'react-pro-sidebar';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 export default function Chiefwarden() {
   
-    const student = { name: "User", reg: 20215153 };
+    const location=useLocation();
+    const userData = location.state?.userData;
+
+    
     const [show, setShow] = useState(true);
    const navigate=useNavigate();
     const showHandler = () => {
@@ -44,13 +47,42 @@ export default function Chiefwarden() {
             
           </Menu>
         </Sidebar>
-       <Link to={'/hostelCA'}> <div className='hostelBox1'>Hostel A</div></Link>
-       <Link to={'/hostelCA'}><div className='hostelBox2'>Hostel B</div></Link>
-       <Link to={'/hostelCA'}><div className='hostelBox3'>Hostel C</div></Link>
-       <Link to={'/hostelCA'}><div className='hostelBox4'>Hostel D</div></Link>
+        <div
+        className={`hostelBox1 ${
+          userData.hostel !== 'Tilak' ? 'disabled1' : ''
+        }`}
+        onClick={() => userData.hostel === 'Tilak' && navigate('/hostelCA', { state: { userData: userData } })}
+      >
+        Tilak
+      </div>
+      <div
+        className={`hostelBox2 ${
+          userData.hostel !== 'SVBH' ? 'disabled2' : ''
+        }`}
+        onClick={() => userData.hostel==='SVBH'&&navigate('/hostelCA', { state: { userData: userData } })}
+      >
+        SVBH
+        
+      </div>
+      <div
+        className={`hostelBox3 ${
+          userData.hostel !== 'Tagore' ? 'disabled3' : ''
+        }`}
+        onClick={() => userData.hostel==='Tagore'&&navigate('/hostelCA', { state: { userData: userData } })}
+      >
+        Tagore
+      </div>
+      <div
+        className={`hostelBox4 ${
+          userData.hostel !== 'Tondon' ? 'disabled4' : ''
+        }`}
+        onClick={() => userData.hostel==='Tondon'&&navigate('/hostelCA', { state: { userData: userData } })}
+      >
+        Tondon
+      </div>
         <Marquee direction='reverse'>
           <div className='marquee-content'>
-            Select Hostel {student.name}
+            Select Hostel {userData.name}
           </div>
         </Marquee>
       </div>

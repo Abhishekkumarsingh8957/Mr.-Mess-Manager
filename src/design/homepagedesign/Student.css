@@ -4,6 +4,32 @@
     min-width: 100vw;
     overflow-y: scroll;
 }
+
+.disabled1{
+    background-image: url('https://lbt.ac.in/wp-content/uploads/2022/10/hostel_front_view_img01.jpeg');
+    background-size: cover;
+    background-position: center;
+    opacity: .3;
+}
+.disabled2{
+    background-image:  url('https://klyuniv.ac.in/wp-content/gallery/hostel-accommodation/hostel-2.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: .3;
+}
+.disabled3{
+    background-image:  url('https://qph.cf2.quoracdn.net/main-qimg-8f0a0737d9b70e7ad2564238d288cb8f-lq');
+    background-size: cover;
+    background-position: center;
+    opacity: .3;
+}
+.disabled4{
+    background-image: url('https://b-u.ac.in/sites/b-u.ac.in/files/styles/department_banners/public/Menu%20Banners/A7302640.jpg?h=e86091ec&itok=ZI66fUcN');
+    background-size: cover;
+    background-position: center;
+    opacity: .3;
+}
+
 .hostelBox1,.hostelBox2,.hostelBox3,.hostelBox4{
     border: 1px solid #ccc;
     padding: 10px;

@@ -1,0 +1,18 @@
+.add-button{
+    width: fit-content;
+    height: 6vh;
+    margin-right: 2vw;
+    margin-left: 1vw;
+    border-radius: 2px;
+}
+
+.add-bar{
+    border-radius: 2px;
+    border-width: 2px;
+}
+
+label{
+    color: blueviolet;
+     font-size: large;
+}
+

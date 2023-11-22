@@ -167,7 +167,6 @@ const Navbar = () => {
   );
 };
 
-// Popup Style
 const popupStyle = {
   width: '60%',
   height: 'auto',
@@ -177,5 +176,5 @@ const popupStyle = {
   background: '#fff',
 };
 
-// Export component
+
 export default Navbar;

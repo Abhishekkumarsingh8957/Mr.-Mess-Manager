@@ -10,7 +10,7 @@ const Registera = () => {
 
  const [username,setUsername]=useState("");
  const [name,setName]=useState("");
- const [cont,setCont]=useState("");
+ const [contact,setCont]=useState("");
  const [hostel,setHostel]=useState("");
  const [password,setPassword]=useState("");
 
@@ -18,24 +18,23 @@ const Registera = () => {
 
  const handleSubmit= async (e)=>{
   e.preventDefault();
-  console.log(username,name,cont,hostel,password);
+  console.log(username,name,contact,hostel,password);
   
   try {
-    const res = await axios.post('/api/v1/auth/registera', {
+    const res = await axios.post('http://localhost:8080/registerA', {
       username,
       name,
-      cont,
+      contact,
       hostel,
       
       password
     });
     if (res.data.success) {
-      // toast.success(res.data.message);
-    navigate("/");
+      
 
     console.log('successful')
   } else {
-    // toast.error(res.data.message);
+    
   }
 } catch (error) {
   console.log(error);
@@ -82,7 +81,7 @@ const Registera = () => {
       <input
         type="text"
         placeholder="Enter Registration Number "
-        value={cont}
+        value={contact}
         onChange={(e)=>setCont(e.target.value)}
         required
        

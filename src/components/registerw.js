@@ -9,7 +9,7 @@ const Registerw = () => {
 
  const [username,setUsername]=useState("");
  const [name,setName]=useState("");
- const [cont,setCont]=useState("");
+ const [contact,setCont]=useState("");
  const [hostel,setHostel]=useState("");
  const [password,setPassword]=useState("");
 
@@ -17,31 +17,29 @@ const Registerw = () => {
 
  const handleSubmit= async (e)=>{
   e.preventDefault();
-  console.log(username,name,cont,hostel,password);
-  // toast.success('Registered Successfully')
-
+  console.log(username,name,contact,hostel,password);
   try {
-    const res = await axios.post('/api/v1/auth/registerw', {
+    const res = await axios.post('http://localhost:8080/registerCW', {
       username,
       name,
-      cont,
+      contact,
       hostel,
       
       password
     });
     if (res.data.success) {
-        // toast.success(res.data.message);
-      navigate("/");
-
-      console.log('successful')
-    } else {
-      // toast.error(res.data.message);
-    }
-  } catch (error) {
-    console.log(error);
-    // toast.error("Something went wrong");
+      
+     
+    console.log('successful')
+  } else {
+    
   }
+} catch (error) {
+  console.log(error);
+  // toast.error("Something went wrong");
+}
 
+ 
 };
 
 
@@ -82,7 +80,7 @@ const Registerw = () => {
       <input
         type="text"
         placeholder="Enter Registration Number "
-        value={cont}
+        value={contact}
         onChange={(e)=>setCont(e.target.value)}
         required
        

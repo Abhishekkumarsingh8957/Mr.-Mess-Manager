@@ -13,31 +13,72 @@ import '../../design/homepagedesign/Student.css';
 import '../../design/hosteldesign/hostel.css';
 import Member from './memeber';
 import Messmenu from './messmenu';
-import Profile from '../profile';
-
+import { AiFillCheckSquare } from "react-icons/ai";
+import { useLocation } from 'react-router-dom';
 
 
 
 export default function HostelCA() {
-  const student = { name: "User", reg: 20215153, hostel: "Hostelname" };
+
+  const location = useLocation();
+  const userData = location.state?.userData;
+  console.log(location.state)
+  const [warden, setWarden] = useState({ name: "", hostel: "" });
+  const [ischeck,setcheck]=useState(false);
   const navigate = useNavigate();
+  const [resolve,setResolve]=useState(false);
   const [show, setShow] = useState(false);
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState({
     comment: "",
     time: null,
-    sendername: student.name,
+    sendername: warden.name,
+    _id:"",
+    resolved:""
   });
+  const [upvote,Setup]=useState(0);
+  const [downvote,Setdown]=useState(0);
+
+
+  const increment=()=>{
+    
+    Setup(upvote+1);
+  }
+  const decrement=()=>{
+    
+      
+      Setdown(downvote+1);
+    
+   
+  }
+  useEffect(() => {
+    if (userData) {
+      console.log(userData)
+      setWarden({
+        name: userData.name ,
+        hostel: userData.hostel 
+      });
+    }
+  }, [userData]);
+
 
   useEffect(() => {
-    axios.get('https://64bb931f7b33a35a44467b38.mockapi.io/comments')
+    axios.get('http://localhost:8080/comment',{ params: { hostel: warden.hostel } })
       .then(response => {
+       
+        console.log(response.data)
         setComments(response.data);
       })
       .catch(error => {
         console.error(error);
       });
-  }, []);
+   
+    axios.get("http://localhost:8080/resolvecomment")
+    .then((res)=>{
+      console.log(res.data.comment)
+    })
+
+  }, [warden.hostel]);
 
   const handleComment = (e) => {
     setNewComment({
@@ -45,6 +86,27 @@ export default function HostelCA() {
       comment: e.target.value,
     });
   };
+
+  const sendresolveStatus = (id, currentResolvedStatus) => {
+    const updatedResolvedStatus = !currentResolvedStatus;
+  
+   
+    setComments((prevComments) =>
+      prevComments.map((comment) =>
+        comment._id === id ? { ...comment, resolved: updatedResolvedStatus } : comment
+      )
+    );
+  
+    axios
+      .put(`http://localhost:8080/comment/${id}`, { resolved: updatedResolvedStatus })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  
 
   const handleSend = () => {
     newComment.time = new Date().toLocaleDateString('en-IN', {
@@ -56,26 +118,34 @@ export default function HostelCA() {
       hour12: true,
     });
 
-    axios.post('https://64bb931f7b33a35a44467b38.mockapi.io/comments', newComment)
+  
+ 
+  
+   
+
+    axios.post('http://localhost:8080/comment', newComment)
       .then(response => {
         setComments([...comments, newComment]);
         setNewComment({
           comment: "",
           time: null,
-          sendername: student.name,
+          sendername: warden.name,
+          _id:"",
+          resolved:""
         });
       })
       .catch(error => {
         console.error(error);
       });
   };
+ 
     const showHandler = () => {
         setShow(!show);
       };
   return (
     <div className='body-student'>
       <div className='navbar'>
-        <div className='title'>{student.hostel}</div>
+        <div className='title'>{warden.hostel}</div>
         <ul className='list-items'>
           <li>
             <u>Home</u>
@@ -86,8 +156,12 @@ export default function HostelCA() {
             <FaEdit size={22}/>
           </li>
           <li>
-            <u >StudentData</u>
+          <u onClick={()=>navigate('/studentdata',{ state: { hostel: warden.hostel } })}>StudentData</u>
             <FaDatabase />
+          </li>
+          <li>
+           <u onClick={()=>{navigate('/resolvecomment')}}>Resolved-box</u>
+           <AiFillCheckSquare size={22} />
           </li>
           <li onClick={() => { navigate('/'); console.log("gobck"); }}>
             <u>Logout</u>
@@ -95,24 +169,38 @@ export default function HostelCA() {
           </li>
         </ul>
       </div>
-      <div className='profile' onClick={showHandler}>
+      <div className='profile'>
         <RxHamburgerMenu size={26} color='violet' />
       </div>
      
       <Popup trigger={<h3><u>Mess-menu</u></h3>} modal nested contentStyle={popUpstyle}>
         <Messmenu />
       </Popup>
-      {show ? <Profile /> : <Member />}
+      
       <div className='complaint-box'>
         {comments.map((comment, index) => (
           <div key={index}>
             <div className='comment-section'>
               <div className='comment-sender'> {comment.sendername} {comment.time}</div>
               {comment.comment}
-              <span className='vote-btn'>
-                <BiSolidUpvote size={18} className='up-btn' color='green' />&nbsp;
-                <BiSolidDownvote size={18} className='down-btn' color='red' />
-              </span>
+              <div className='vote-container'>
+              <input
+                   type='checkbox'
+                   id='resolve'
+                   checked={comment.resolved} 
+                   onChange={() => sendresolveStatus(comment._id, comment.resolved)}
+                   key={index}
+                 />
+                 <span className='vote-btn'>
+                  <BiSolidUpvote className='up-btn' size={15} color='green' onClick={increment} />
+                  <span className='vote-count' key={index}>{upvote}</span>
+                </span>
+                <div className='separator'></div>
+                <span className='vote-btn'>
+                  <BiSolidDownvote className='down-btn' size={15} color='red' onClick={decrement} />
+                  <span className='vote-count'>{downvote}</span>
+                </span>
+              </div>
             </div>
           </div>
         ))}

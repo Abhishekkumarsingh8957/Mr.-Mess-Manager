@@ -73,10 +73,43 @@ h3 u{
     background-color: #45a049;
 }
 
+.vote-btn {
+  display: flex;
+  align-items: center;
+}
+
+.up-btn,
+.down-btn {
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.vote-count {
+  font-size: 14px;
+  margin-left: 5px;
+  color: #777;
+}
+
+.vote-container {
+  display: flex;
+  margin-top: 10px; /* Adjust the margin as needed */
+  border: solid 1px;
+  border-radius: 5px;
+  align-items: center;
+  border-color:blueviolet;
+  max-width: fit-content;
+}
+
+.separator {
+  width: 1px;
+  height: 20px; /* Adjust the height as needed */
+  background-color: #777;
+  margin: 0 10px; /* Adjust the margin as needed */
+}
 
 .comment-section {
     width: 40vw;
-    min-height: 40px;
+    height: fit-content;
     padding: 10px;
     border-radius: 20px; 
     border: 2px solid #ccc; 
@@ -127,8 +160,10 @@ h3 u{
     }
 
      .comment-section{
-      height: 10vh;
+      height: fit-content;
      }
+
+
     
   }
 
@@ -143,6 +178,7 @@ h3 u{
     .comment-section{
       margin-left: 5vw;
       width: 60vw;
+      height: fit-content;
     }
     .complaint-typer{
       width: 50vw;

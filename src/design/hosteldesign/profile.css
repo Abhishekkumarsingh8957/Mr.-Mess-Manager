@@ -7,7 +7,8 @@
     animation: slider .2s  1 linear ;
     border-left: none;
     border-width: 2px;
-    
+    border-color: white;
+    border-radius: 5px;
    
 }
 /* .profile-photo{
@@ -33,10 +34,14 @@
     margin-left: 5%;
     height: 5vh;
     border: solid;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: large;
     border-radius: .5px;
      border-width: 1px;
      background-color: rgb(100, 97, 97);
      text-align: center;
+     border-color: blueviolet;
+     text-transform: capitalize;
 }
 
 .profile-box-reg{
@@ -49,6 +54,9 @@
      border-width: 1px;
      text-align: center;
      background-color: rgb(100, 97, 97);
+     border-color: blueviolet;
+     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+     font-size: large;
 }
 .profile-box-id {
     width: 80%;
@@ -58,6 +66,7 @@
     border: solid;
     border-radius: .5px;
     border-width: 1px;
+    border-color: blueviolet;
 }
 
 @media only screen and (max-width:803px) {

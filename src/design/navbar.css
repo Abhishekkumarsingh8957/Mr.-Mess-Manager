@@ -10,14 +10,28 @@
 .title {
     height: 7vh;
     font-weight: bold;
-    font-size: 1.5em;
+    font-size: 2.5em;
     /* color: brown; */
-    margin-top: 1.65vh;
+    margin-top: 1.5vh;
     text-align: left; /* Align the text to the left */
     padding-left: 2vh; /* Add some left padding for spacing */
-    font-family: 'Arial', sans-serif;
+    font-family: 'Playfair Display', serif;
+
+}
+.title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #4285f4; /* Google Blue, or choose your own color */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-right: 10px; /* Add margin for spacing */
 }
 
+.title::after {
+  content: '\00b7'; /* Unicode middle dot character for a simple separator */
+  margin-left: 10px;
+  color: #ffffff; /* White color, or choose your own color */
+}
 
 .navbar {
     align-items: center;
@@ -28,9 +42,8 @@
     position:sticky;
     top: 0;
     width: 100%;
-   
-    
-    /* background-color: rgb(168, 230, 168); */
+    border-radius: 5px;
+  
 }
 
 .list-items {
@@ -39,6 +52,7 @@
     text-align: center;
     display: flex;
     position: relative;
+    margin-top: 5vh;
 }
 
 .list-items li {
@@ -46,6 +60,7 @@
     margin-bottom: 2px;
     font-size:1em;
     font-weight: 500;
+    
     position: relative; /* Relative positioning for sub-list */
 }
 .list-items li:nth-child(1):hover{

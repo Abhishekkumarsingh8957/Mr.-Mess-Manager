@@ -90,22 +90,24 @@ const Loginw = () => {
   // toast.success('Registered Successfully')
 
   try {
-    const res = await axios.post('/api/v1/auth/logina', {
+    const res = await axios.post('http://localhost:8080/loginA', {
       username,
+      password,
+       
       
-      password
     });
-    if (res.data.success) {
-        // toast.success(res.data.message);
-      navigate("/");
-
-      console.log('successful')
+    if (res.data.message === "Login successful") {
+      navigate("/accountant", { state: { userData: res.data.user } });
+      console.log(res.data.user)
+      console.log('successful');
     } else {
-      // toast.error(res.data.message);
+      
+      console.error(res.data.message);
+      
     }
   } catch (error) {
-    console.log(error);
-    // toast.error("Something went wrong");
+    console.error(error);
+    
   }
 
 };

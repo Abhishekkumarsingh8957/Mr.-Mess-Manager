@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 import { AiFillHome } from 'react-icons/ai';
+import { AiFillCheckSquare } from "react-icons/ai";
 import { BiSolidUpvote, BiSolidDownvote } from 'react-icons/bi';
 import { FcAbout } from 'react-icons/fc';
 import { RiLogoutCircleFill } from 'react-icons/ri';
@@ -13,11 +14,29 @@ import '../../design/hosteldesign/hostel.css';
 import Member from './memeber';
 import Messmenu from './messmenu';
 import Profile from '../profile';
-import Calorie from '../calorie/calorie';
+import { useLocation } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 
 export default function HostelA() {
-  const student = { name: "User", reg: 20215153, hostel: "Hostelname" };
+
+  const location = useLocation();
+  const userData = location.state?.userData;
+  const [student, setStudent] = useState({ name: "", reg: "", hostel: "" ,status:""});
+  useEffect(() => {
+    if (userData) {
+      
+      setStudent({
+        name: userData.name ,
+        reg: userData.reg ,
+        hostel: userData.hostel ,
+        status:userData.status
+      });
+    }
+  }, [userData]);
+
+ 
+  const [upvote,Setup]=useState(0);
+  const [downvote,Setdown]=useState(0);
   const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const [comments, setComments] = useState([]);
@@ -25,18 +44,39 @@ export default function HostelA() {
     comment: "",
     time: null,
     sendername: student.name,
+    hostel:student.hostel,
+  
   });
+ 
+
+   console.log(userData.status)
+
+  const increment=()=>{
+    
+    Setup(upvote+1);
+  }
+  const decrement=()=>{
+    
+      
+      Setdown(downvote+1);
+    
+   
+  }
 
   useEffect(() => {
-    axios.get('https://64bb931f7b33a35a44467b38.mockapi.io/comments')
+    
+    axios.get('http://localhost:8080/comment',{ params: { hostel: student.hostel } })
       .then(response => {
-        console.log(response);
+       
+        console.log(response.data)
         setComments(response.data);
       })
       .catch(error => {
         console.error(error);
       });
-  }, []);
+}, [[student.hostel],comments]);
+  
+   console.log(comments)
 
   const handleComment = (e) => {
     setNewComment({
@@ -54,14 +94,16 @@ export default function HostelA() {
       minute: 'numeric',
       hour12: true,
     });
-
-    axios.post('https://64bb931f7b33a35a44467b38.mockapi.io/comments', newComment)
+    
+   
+    axios.post('http://localhost:8080/comment', newComment)
       .then(response => {
         setComments([...comments, newComment]);
         setNewComment({
           comment: "",
           time: null,
           sendername: student.name,
+          hostel:student.hostel
         });
       })
       .catch(error => {
@@ -86,14 +128,13 @@ export default function HostelA() {
             <Link to='/checkcalorie'><u>CheckCalorie</u></Link>
             <FcAbout color='black' size={25} />
           </li>
-          <li onClick={() => { navigate('/'); console.log("gobck"); }}>
+          <li>
+           <u onClick={()=>{navigate('/resolvecomment')}}>Resolved-box</u>
+           <AiFillCheckSquare size={25} color='blue'/>
+          </li>
+          <li onClick={() => { navigate('/');  }}>
             <u>Logout</u>
             <RiLogoutCircleFill size={25} />
-          </li>
-          <li>
-            <u className='profile-link'>Profile</u>
-             
-        
           </li>
         </ul>
       </div>
@@ -102,24 +143,31 @@ export default function HostelA() {
       </div>
      
       <Popup trigger={<h3><u>Mess-menu</u></h3>} modal nested contentStyle={popUpstyle}>
-        <Messmenu />
+        <Messmenu props={{ hostelname: student.hostel }}/>
       </Popup>
-      {show ? <Profile /> : <Member />}
+      {show && <Profile student={student}/> }
       <div className='complaint-box'>
         {comments.length > 0 && comments.map((comment, index) => (
           <div key={index}>
             <div className='comment-section'>
               <div className='comment-sender'>{comment.sendername} {comment.time}</div>
               {comment.comment}
-              <span className='vote-btn'>
-                <BiSolidUpvote className='up-btn' color='green' />&nbsp;
-                <BiSolidDownvote className='down-btn' color='red' />
-              </span>
+              <div className='vote-container'>
+                <span className='vote-btn'>
+                  <BiSolidUpvote className='up-btn' size={15} color='green' onClick={increment} />
+                  <span className='vote-count'>{upvote}</span>
+                </span>
+                <div className='separator'></div>
+                <span className='vote-btn'>
+                  <BiSolidDownvote className='down-btn' size={15} color='red' onClick={decrement} />
+                  <span className='vote-count'>{downvote}</span>
+                </span>
+              </div>
             </div>
           </div>
         ))}
       </div>
-      <input
+      {student.status&&<input
         className='complaint-typer'
         placeholder='Type complaint or any feedback and press Enter'
         onChange={handleComment}
@@ -129,7 +177,7 @@ export default function HostelA() {
             handleSend();
           }
         }}
-      />
+      />}
     </div>
   );
 }

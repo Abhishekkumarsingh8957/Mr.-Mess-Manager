@@ -12,6 +12,9 @@ import HostelA from './components/hostels/hostelA';
 import Emessmenu from './components/hostels/Emessmenu';
 import HostelCA from './components/hostels/hostelCA';
 import Calorie from './components/calorie/calorie';
+import StudentTable from './components/hostels/StudentTable';
+import Member from './components/hostels/memeber';
+import Profile from './components/profile';
 
 
 const router=createBrowserRouter([{
@@ -42,7 +45,17 @@ const router=createBrowserRouter([{
 ,{
     path:'/checkcalorie',
     element:<Calorie/>
-}])
+}
+,
+{
+    path:'/studentdata',
+    element:<StudentTable/>
+}
+,{
+    path:'/resolvecomment',
+    element:<Member/>
+},
+])
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

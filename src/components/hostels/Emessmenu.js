@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import { RiLogoutCircleFill } from 'react-icons/ri';
 import { AiFillHome } from 'react-icons/ai';
 import { FcAbout } from 'react-icons/fc';
@@ -7,75 +8,39 @@ import { useNavigate } from 'react-router-dom';
 import '../../design/hosteldesign/Emessmenu.css';
 
 export default function Emessmenu() {
-  const Mess = [
-    {
-      Day: "Sunday",
-      BreakFast: ["item1", "item2", "item3"],
-      Lunch: ["item3", "item4", "item4"],
-      Snacks: ["item5", "item6", "item7"],
-      Dinner: ["item7", "item8", "item9"],
-      
-    },
-    {
-        Day: "Monday",
-        BreakFast: ["item10", "item11", "item12"],
-        Lunch: ["item13", "item14", "item15"],
-        Snacks: ["item16", "item17", "item18"],
-        Dinner: ["item19", "item20", "item21"],
-        
-      },
-      {
-        Day: "Tuesday",
-        BreakFast: ["item10", "item11", "item12"],
-        Lunch: ["item13", "item14", "item15"],
-        Snacks: ["item16", "item17", "item18"],
-        Dinner: ["item19", "item20", "item21"],
-        
-      },
-      {
-        Day: "Wednesday",
-        BreakFast: ["item10", "item11", "item12"],
-        Lunch: ["item13", "item14", "item15"],
-        Snacks: ["item16", "item17", "item18"],
-        Dinner: ["item19", "item20", "item21"],
-        
-      },
-      {
-        Day: "Thursday",
-        BreakFast: ["item10", "item11", "item12"],
-        Lunch: ["item13", "item14", "item15"],
-        Snacks: ["item16", "item17", "item18"],
-        Dinner: ["item19", "item20", "item21"],
-        
-      },
-      {
-        Day: "Friday",
-        BreakFast: ["item10", "item11", "item12"],
-        Lunch: ["item13", "item14", "item15"],
-        Snacks: ["item16", "item17", "item18"],
-        Dinner: ["item19", "item20", "item21"],
-        
-      },
-      {
-        Day: "Saturday",
-        BreakFast: ["item10", "item11", "item12"],
-        Lunch: ["item13", "item14", "item15"],
-        Snacks: ["item16", "item17", "item18"],
-        Dinner: ["item19", "item20", "item21"],
-
-      },
-  ];
-
-  const [edit, setEdit] = useState(Array(Mess.length).fill(true));
-  const [save, setSave] = useState(false);
+  const [messMenu, setMessMenu] = useState([]);
+  const [edit, setEdit] = useState(Array(messMenu.length).fill(false));
   const navigate = useNavigate();
-
-  
   const handleToggleEdit = (index) => {
     const newEdit = [...edit];
     newEdit[index] = !newEdit[index];
     setEdit(newEdit);
   };
+  useEffect(() => {
+    const fetchMenuData = async () => {
+      try {
+        const response = await axios.get("http://localhost:8080/messmenu", { params: { hostelname: "Tilak" } });
+        setMessMenu(response.data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    fetchMenuData();
+  }, []);
+
+  const Mess = Object.values(messMenu).map(({ hostelname, menu }) => {
+    const days = Object.keys(menu);
+
+    return days.map((day) => ({
+      Day: day,
+      BreakFast: menu[day][0],
+      Lunch: menu[day][1],
+      Snacks: menu[day][2],
+      Dinner: menu[day][3],
+    }));
+  }).flat();
+
 
   return (
     <div className='body-student'>
@@ -116,12 +81,12 @@ export default function Emessmenu() {
           {Mess.map((val, index) => (
             <tr key={index}>
               <td>{val.Day}</td>
-              <td>{edit[index] ? val.BreakFast.join(', ') : <input />}</td>
-              <td>{edit[index] ? val.Lunch.join(', ') : <input />}</td>
-              <td>{edit[index] ? val.Snacks.join(', ') : <input />}</td>
-              <td>{edit[index] ? val.Dinner.join(', ') : <input />}</td>
+              <td>{!edit[index] ? val.BreakFast : <input value={val.BreakFast} />}</td>
+              <td>{!edit[index] ? val.Lunch : <input value={val.Lunch} />}</td>
+              <td>{!edit[index] ? val.Snacks : <input value={val.Snacks} />}</td>
+              <td>{!edit[index] ? val.Dinner : <input value={val.Dinner} />}</td>
               <td>
-                {edit[index] ? (
+                {!edit[index] ? (
                   <button className='edit-btn' onClick={() => handleToggleEdit(index)}>
                     Edit
                   </button>

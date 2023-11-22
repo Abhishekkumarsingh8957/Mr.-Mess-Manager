@@ -1,14 +1,18 @@
 import Navbar from './components/navbar';
 import './App.css';
-import Calorie from './components/calorie/calorie';
+import Emessmenu from './components/hostels/Emessmenu';
+import Member from './components/hostels/memeber';
+
 
 
 function App() {
   
   return (
-    
-     <Navbar /> 
+         <Navbar /> 
+        // <Member/>
+
     // <Calorie />
+    // <StudentTable/>
         
   )
 }
