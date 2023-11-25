@@ -9,7 +9,7 @@ import { FcAbout } from 'react-icons/fc';
 import '../design/navbar.css';
 import '../design/About.css';
 import Login from './login';
-import About from './About';
+
 import LoginCW from './loginCW';
 import LoginAccnt from './loginAccnt';
 import Registera from './registera';
@@ -20,9 +20,9 @@ import Register from './register';
 const Navbar = () => {
   // State
   const description = [
-    { Person: "Student", Feat1: "some feature" },
-    { Person: "ChiefWarden", Feat1: "some feature" },
-    { Person: "Accountant", Feat1: "some feature" }
+    { Person: "Student", Feat1: "Have hostel specific portal" ,Feat2:"User can check there calorie for each day"},
+    { Person: "ChiefWarden", Feat1: "can block any user temporarily",Feat2:"Have hostel specific portal"},
+    { Person: "Accountant", Feat1: "Send daily expenses detail",Feat2:"Manage the expenses" }
   ];
   const [hideabout, setAbout] = useState(() => false);
   const [show, setShow] = useState(Array(description.length).fill(false));
@@ -153,7 +153,8 @@ const Navbar = () => {
                     </li>
                     {show[index] && (
                       <div className='description-box'>
-                        <li type='none'>&nbsp;{descript.Feat1}</li>
+                        <li type='none' >&nbsp;{descript.Feat1}</li>
+                        <li type='none'>&nbsp;{descript.Feat2}</li>
                       </div>
                     )}
                   </li>

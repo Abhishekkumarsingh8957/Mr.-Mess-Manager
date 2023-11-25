@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
 
 import 'reactjs-popup/dist/index.css';
 import { AiFillHome } from 'react-icons/ai';
@@ -18,12 +18,18 @@ import Profile from '../profile';
 import { Link } from 'react-router-dom';
 
 export default function Member() {
+
+  const location=useLocation();
+  const hostel=location.state?.hostel
+
+   console.log(hostel)
+
   const navigate=useNavigate();
   const [resComment, setresComment] = useState([]);
  
 
   useEffect(() => {
-    axios.get("http://localhost:8080/resolvecomment")
+    axios.get("http://localhost:8080/resolvecomment",{params:{hostel:hostel}})
       .then((res) => {
         setresComment(res.data);
       })
@@ -35,7 +41,7 @@ export default function Member() {
   return (
     <div className='body-student'>
     <div className='navbar'>
-    <div className='title'>Mr.MessManager</div>
+    <div className='title'>{hostel}</div>
     <ul className='list-items'>
       <li>
         <u>Home</u>

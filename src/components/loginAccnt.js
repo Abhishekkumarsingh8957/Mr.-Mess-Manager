@@ -101,7 +101,7 @@ const Loginw = () => {
       console.log(res.data.user)
       console.log('successful');
     } else {
-      
+      alert("user not registerd Register first")
       console.error(res.data.message);
       
     }
@@ -123,7 +123,7 @@ const Loginw = () => {
 
     <form onSubmit={handleSubmit} >
     <div className="imgcontainer">
-      <img src="img_avatar2.png" alt="Avatar" className="avatar" />
+      <img src="" alt="Avatar" className="avatar" />
     </div>
     <div className="form-container">
       <label htmlFor="uname"><b>Username</b></label>

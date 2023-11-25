@@ -32,7 +32,7 @@ const Loginw = () => {
     } else {
       
       console.error(res.data.message);
-      
+      alert("user not registerd Login first")
     }
   } catch (error) {
     console.error(error);

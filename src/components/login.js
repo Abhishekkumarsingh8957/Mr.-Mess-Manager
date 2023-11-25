@@ -6,28 +6,27 @@ import axios from 'axios';
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [hostel, setHostel] = useState(""); // Added hostel state
-  const [name, setName] = useState(""); // Added name state
+  // const [hostel, setHostel] = useState(""); // Added hostel state
+  // const [name, setName] = useState(""); // Added name state
 
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(username, password, hostel, name);
+    console.log(username, password);
 
     try {
       const res = await axios.post('http://localhost:8080/loginstudent', {
         username,
         password,
-        hostel, 
-        name, 
+       
       });
       if (res.data.message === "Login successful") {
         navigate("/student", { state: { userData: res.data.user } });
         console.log(res.data.user)
         console.log('successful');
       } else {
-        // Handle unsuccessful login
+        alert("user not registerd Login first")
         console.error(res.data.message);
         // You might want to show an error message to the user
       }
@@ -62,23 +61,8 @@ const Login = () => {
           required
         />
 
-        <label htmlFor="hostel"><b>Hostel</b></label>
-        <input
-          type="text"
-          placeholder="Enter Hostel"
-          value={hostel}
-          onChange={(e) => setHostel(e.target.value)}
-          required
-        />
+      
 
-        <label htmlFor="name"><b>Name</b></label>
-        <input
-          type="text"
-          placeholder="Enter Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
 
         <button type="submit">LOGIN</button>
 

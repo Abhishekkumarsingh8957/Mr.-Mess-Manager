@@ -22,10 +22,11 @@
 
 .contact-section {
   margin-top: 30px;
+
 }
 
 .contact-section h3 {
-  color: #333;
+  color: red;
 }
 
 .contact-section p {
@@ -37,6 +38,7 @@
 
 .contact-person h4 {
   color: #333;
+  color: red;
 }
 /* Media query for smaller screens */
 @media screen and (max-width: 768px) {

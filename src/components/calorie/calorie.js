@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { RiLogoutCircleFill } from 'react-icons/ri';
-import { AiFillHome } from 'react-icons/ai';
-import { useNavigate } from 'react-router-dom';
+import { AiFillHome,AiFillCheckSquare } from 'react-icons/ai';
+import { useLocation, useNavigate } from 'react-router-dom';
+import {FcAbout} from 'react-icons/fc'
 import '../../design/calorie.css';
 import Marquee from 'react-fast-marquee';
 import axios from 'axios';
 
 export default function Calorie() {
- 
+  const location = useLocation();
+  const hostelName = location.state?.hostel;
+
+
  const [totsum, setTotsum] = useState(0)
  const [showsum,setshowsum]=useState(0);
   const [sum1, setSum1] = useState(0);
@@ -24,7 +28,7 @@ export default function Calorie() {
   useEffect(() => {
     const fetchMenuData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/messmenu",{ params: { hostelname: "Tilak" } });
+        const response = await axios.get("http://localhost:8080/messmenu",{ params: { hostelname: hostelName } });
         setMessMenu(response.data);
         console.log(response.data[0].menu.sunday[0][0])
        
@@ -36,8 +40,8 @@ export default function Calorie() {
     fetchMenuData();
   }, []);
 
-  
-  // console.log(messMenu.menu.Monday)
+  console.log(messMenu)
+
 
   const mapday = new Map([
     ["Sunday", [["Paratha", "Chana Chutney", "Aloo Sabzi"], ["Rajma Rice", "Palak Paneer", "Roti"], ["Bhujia", "Pakode", "Tea"], ["Dal Makhani", "Shahi Paneer", "Naan"]]],
@@ -150,11 +154,20 @@ export default function Calorie() {
   return (
     <div className='calorie-body'>
       <div className='navbar'>
-        <div className='title'>Hostel</div>
+        <div className='title'>{hostelName}</div>
         <ul className='list-items'>
           <li>
             <u>Home</u>
             <AiFillHome size={25} />
+          </li>
+     
+          <li>
+            <u onClick={()=>{navigate('/checkcalorie',{state:{hostel:hostelName}})}}>CheckCalorie</u>
+            <FcAbout color='black' size={25} />
+          </li>
+          <li>
+           <u onClick={()=>{navigate('/resolvecomment',{state:{hostel:hostelName}})}}>Resolved-box</u>
+           <AiFillCheckSquare size={25} color='blue'/>
           </li>
           <li onClick={() => { navigate('/'); console.log('goback'); }}>
             <u>Logout</u>
@@ -167,11 +180,7 @@ export default function Calorie() {
       </div>
 
       <h3 className='mess-menu-title'> CalorieMeter </h3>
-      <div className='note'>
-        <Marquee direction='reverse'>
-          <b>Note:</b>calorie calculation will take some time u need to press calculate button twice
-          </Marquee> 
-          </div>
+      
       <div className='calorie-box'>
       <h4>Breakfast</h4>
       <ul>
@@ -341,7 +350,11 @@ export default function Calorie() {
       </ul> 
       <button className='calculate' onClick={showcalculate}>calculate</button>
       </div>
-
+      <div className='note'>
+        <Marquee direction='reverse'>
+          <b>Note:</b>calorie calculation will take some time u need to press calculate button twice
+          </Marquee> 
+          </div>
       <div className='result'>Your calculated calorie for today is <h3>{showsum}</h3></div>
     </div>
   );

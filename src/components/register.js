@@ -30,16 +30,16 @@ const Register = () => {
       password
     });
     if (res.data.success) {
-        // toast.success(res.data.message);
-      navigate("/");
+       
+        alert("successfully registered U can login now")
 
       console.log('successful')
     } else {
-      // toast.error(res.data.message);
+     
     }
   } catch (error) {
     console.log(error);
-    // toast.error("Something went wrong");
+   
   }
 
 };

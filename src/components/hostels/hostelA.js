@@ -125,11 +125,11 @@ export default function HostelA() {
             <AiFillHome size={25} />
           </li>
           <li>
-            <Link to='/checkcalorie'><u>CheckCalorie</u></Link>
+            <u onClick={()=>{navigate('/checkcalorie',{state:{hostel:student.hostel}})}}>CheckCalorie</u>
             <FcAbout color='black' size={25} />
           </li>
           <li>
-           <u onClick={()=>{navigate('/resolvecomment')}}>Resolved-box</u>
+           <u onClick={()=>{navigate('/resolvecomment',{state:{hostel:student.hostel}})}}>Resolved-box</u>
            <AiFillCheckSquare size={25} color='blue'/>
           </li>
           <li onClick={() => { navigate('/');  }}>

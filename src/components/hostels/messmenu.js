@@ -2,13 +2,13 @@ import React, { useEffect ,useState} from 'react';
 import '..//../design//hosteldesign/messmenu.css'
 import axios from 'axios';
 export default function Messmenu({props}) {
-   console.log(props)
+   console.log(props.hostelname)
   const [messMenu, setMessMenu] = useState([]);
   
   useEffect(() => {
     const fetchMenuData = async () => {
       try {
-        const response = await axios.get("http://localhost:8080/messmenu",{ params: { hostelname: "Tilak" } });
+        const response = await axios.get("http://localhost:8080/messmenu",{ params: { hostelname: props.hostelname } });
         setMessMenu(response.data);
        
       } catch (error) {

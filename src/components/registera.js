@@ -31,7 +31,7 @@ const Registera = () => {
     });
     if (res.data.success) {
       
-
+      alert("successfully registered U can login now")
     console.log('successful')
   } else {
     

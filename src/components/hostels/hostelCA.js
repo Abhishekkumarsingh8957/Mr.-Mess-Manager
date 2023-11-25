@@ -73,10 +73,10 @@ export default function HostelCA() {
         console.error(error);
       });
    
-    axios.get("http://localhost:8080/resolvecomment")
-    .then((res)=>{
-      console.log(res.data.comment)
-    })
+    // axios.get("http://localhost:8080/resolvecomment")
+    // .then((res)=>{
+    //   console.log(res.data.comment)
+    // })
 
   }, [warden.hostel]);
 
@@ -152,7 +152,7 @@ export default function HostelCA() {
             <AiFillHome size={25} />
           </li>
           <li>
-            <Link to={'/Emessmenu'}><u>EditMessMenu</u></Link>
+           <u onClick={()=>navigate('/Emessmenu')}>EditMessMenu</u>
             <FaEdit size={22}/>
           </li>
           <li>
@@ -160,7 +160,7 @@ export default function HostelCA() {
             <FaDatabase />
           </li>
           <li>
-           <u onClick={()=>{navigate('/resolvecomment')}}>Resolved-box</u>
+           <u onClick={()=>{navigate('/resolvecomment',{ state: { hostel: warden.hostel } })}}>Resolved-box</u>
            <AiFillCheckSquare size={22} />
           </li>
           <li onClick={() => { navigate('/'); console.log("gobck"); }}>
@@ -174,7 +174,7 @@ export default function HostelCA() {
       </div>
      
       <Popup trigger={<h3><u>Mess-menu</u></h3>} modal nested contentStyle={popUpstyle}>
-        <Messmenu />
+        <Messmenu props={{ hostelname: warden.hostel }}/>
       </Popup>
       
       <div className='complaint-box'>
@@ -229,6 +229,6 @@ const popUpstyle = {
   borderRadius: '8px',
   boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
   background: '#fff',
-  overflow: 'auto', // Add this line to make the content scrollable
+  overflow: 'auto', 
 };
 

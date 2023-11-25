@@ -16,7 +16,7 @@ const Accountant = () => {
    
 
   useEffect(() => {
-    // Retrieve data from local storage when the component mounts
+   
     const storedData = JSON.parse(localStorage.getItem("orderdata") || "[]");
     setOrdersData(storedData);
   }, []);
