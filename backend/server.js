@@ -1,9 +1,8 @@
 import express from 'express';
-import colors from 'colors';
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import cors from 'cors';
-
+import  Color  from 'colors';
 
 const app = express();
 mongoose
@@ -97,18 +96,20 @@ const messmenuSchemaA = new mongoose.Schema({
   }
 });
 
-const expenseSchema=new mongoose.Schema([
-  
+const expenseSchema = new mongoose.Schema({
+  expenses: [
+    {
+      hostelname: String,
+      date: String,
+      total: Number,
+      quantity: Number,
+      price: Number,
+      product: String,
+    },
+  ],
+});
 
-   { 
-    hostelname:String,
-    total:Number,
-    quantity:Number, 
-    date:String,
-    product:String,
-    price:Number
-   }
-  ])
+  
 
 
 const Comment = mongoose.model('Comment', commentSchema);
@@ -304,21 +305,31 @@ app.put('/registerstudent/:id', async (req, res) => {
     res.status(500).json({ message: 'Internal Server Error' });
   }
 });
+app.post('/expense', async (req, res) => {
+  try {
+    let expenseData = [];
 
-app.post('/expense',async(req,res)=>{
-  try{
-      const{ hostelname,date,total,quantity,price,product}=req.body;
-      console.log(req.body)
-      const expense=new Expense({
-        hostelname,price,date,total,quantity,product
-      })
-      await expense.save();
-      res.status(201).json({message:"succesx"});
-  }
-  catch(error){
+    for (const item of req.body) {
+      const { hostelname, date, total, quantity, price, product } = item;
+
+   
+
+      expenseData.push({ hostelname, date, total, quantity, price, product });
+    }
+
+    console.log(expenseData); 
+
+    const expense = new Expense({ expenses: expenseData });
+    await expense.save();
+
+    res.status(201).json({ message: 'success' });
+  } catch (error) {
     console.error(error);
+    res.status(500).json({ message: 'internal server error' });
   }
-})
+});
+
+
 
 app.post('/comment', async (req, res) => {
   try {
@@ -364,7 +375,9 @@ app.put('/comment/:id', async (req, res) => {
 
 app.get('/resolvecomment', async (req, res) => {
   try {
-    const resolvedComments = await Comment.find({ resolved: true});
+   
+    const {hostel}=req.query;
+    const resolvedComments = await Comment.find({ resolved: true,hostel:hostel});
     res.send(resolvedComments);
     console.log(resolvedComments)
     console.log("Sent resolved comments");

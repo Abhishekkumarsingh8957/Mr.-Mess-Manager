@@ -12,6 +12,7 @@ const Register = () => {
  const [reg,setReg]=useState("");
  const [hostel,setHostel]=useState("");
  const [password,setPassword]=useState("");
+ 
 
  const navigate=useNavigate();
 
@@ -26,11 +27,13 @@ const Register = () => {
       name,
       reg,
       hostel,
-      
+      "status":true,
       password
     });
-    if (res.data.success) {
-       
+    console.log(res.data.message)
+    if (res.data.message==="User registered successfully") {
+        
+      
         alert("successfully registered U can login now")
 
       console.log('successful')
@@ -54,9 +57,7 @@ const Register = () => {
   
 
     <form onSubmit={handleSubmit} >
-    <div className="imgcontainer">
-      <img src="img_avatar2.png" alt="Avatar" className="avatar" />
-    </div>
+   
     <div className="form-container">
       <label htmlFor="uname"><b>Username</b></label>
       <input

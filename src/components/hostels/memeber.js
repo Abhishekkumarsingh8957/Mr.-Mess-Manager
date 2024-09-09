@@ -69,7 +69,7 @@ export default function Member() {
     
 
     <div className='resolved-box'>
-    <h2>Resolved Comments:</h2>
+    <h2>Resolved Complaints:</h2>
     {resComment.length > 0 ? (
       <div className="message-container">
         {resComment.map((comment) => (

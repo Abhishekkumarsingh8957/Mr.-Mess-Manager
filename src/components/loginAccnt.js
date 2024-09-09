@@ -122,9 +122,7 @@ const Loginw = () => {
   
 
     <form onSubmit={handleSubmit} >
-    <div className="imgcontainer">
-      <img src="" alt="Avatar" className="avatar" />
-    </div>
+    
     <div className="form-container">
       <label htmlFor="uname"><b>Username</b></label>
       <input

@@ -22,26 +22,23 @@ const Login = () => {
        
       });
       if (res.data.message === "Login successful") {
+        localStorage.setItem("userData",JSON.stringify(res.data.user));
         navigate("/student", { state: { userData: res.data.user } });
         console.log(res.data.user)
         console.log('successful');
       } else {
         alert("user not registerd Login first")
         console.error(res.data.message);
-        // You might want to show an error message to the user
+        
       }
     } catch (error) {
       console.error(error);
-      // Handle other errors (e.g., network issues)
-      // You might want to show an error message to the user
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="imgcontainer">
-        <img src="img_avatar2.png" alt="Avatar" className="avatar" />
-      </div>
+   
       <div className="form-container">
         <label htmlFor="uname"><b>Username</b></label>
         <input

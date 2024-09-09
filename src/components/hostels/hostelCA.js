@@ -206,18 +206,7 @@ export default function HostelCA() {
         ))}
        
       </div>
-      <input
-          className='complaint-typer'
-          placeholder='Type complaint or any feedback and press Enter'
-          onChange={handleComment}
-          value={newComment.comment}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              handleSend(e.key);
-              e.target.value = " ";
-            }
-          }}
-        />
+        
         
     </div>
   );

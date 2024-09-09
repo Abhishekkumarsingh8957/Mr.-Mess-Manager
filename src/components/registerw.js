@@ -27,7 +27,7 @@ const Registerw = () => {
       
       password
     });
-    if (res.data.success) {
+    if (res.data.message==="User registered successfully") {
       
       alert("successfully registered U can login now")
     console.log('successful')
@@ -52,9 +52,7 @@ const Registerw = () => {
   
 
     <form onSubmit={handleSubmit} >
-    <div className="imgcontainer">
-      <img src="img_avatar2.png" alt="Avatar" className="avatar" />
-    </div>
+
     <div className="form-container">
       <label htmlFor="uname"><b>Username</b></label>
       <input

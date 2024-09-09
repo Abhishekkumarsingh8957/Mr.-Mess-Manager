@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Popup from 'reactjs-popup';
@@ -24,7 +24,7 @@ export default function HostelA() {
   const [student, setStudent] = useState({ name: "", reg: "", hostel: "" ,status:""});
   useEffect(() => {
     if (userData) {
-      
+      console.log(localStorage.getItem("userData"));
       setStudent({
         name: userData.name ,
         reg: userData.reg ,
@@ -47,9 +47,9 @@ export default function HostelA() {
     hostel:student.hostel,
   
   });
- 
+  const automaticScroll=useRef(null);
 
-   console.log(userData.status)
+  //  console.log(userData.status)
 
   const increment=()=>{
     
@@ -68,15 +68,21 @@ export default function HostelA() {
     axios.get('http://localhost:8080/comment',{ params: { hostel: student.hostel } })
       .then(response => {
        
-        console.log(response.data)
+        // console.log(response.data)
         setComments(response.data);
       })
       .catch(error => {
         console.error(error);
       });
+      
 }, [[student.hostel],comments]);
   
-   console.log(comments)
+
+useEffect(()=>{
+  automaticScroll.current?.scrollIntoView({behaviour:'smooth'});
+  automaticScroll.current=null;
+},[comments]);
+  //  console.log(comments)
 
   const handleComment = (e) => {
     setNewComment({
@@ -149,10 +155,12 @@ export default function HostelA() {
       <div className='complaint-box'>
         {comments.length > 0 && comments.map((comment, index) => (
           <div key={index}>
+             <div ref={automaticScroll} />{/*for automatic scroll*/}
             <div className='comment-section'>
+             
               <div className='comment-sender'>{comment.sendername} {comment.time}</div>
               {comment.comment}
-              <div className='vote-container'>
+              {/* <div className='vote-container'>
                 <span className='vote-btn'>
                   <BiSolidUpvote className='up-btn' size={15} color='green' onClick={increment} />
                   <span className='vote-count'>{upvote}</span>
@@ -162,7 +170,7 @@ export default function HostelA() {
                   <BiSolidDownvote className='down-btn' size={15} color='red' onClick={decrement} />
                   <span className='vote-count'>{downvote}</span>
                 </span>
-              </div>
+              </div> */}
             </div>
           </div>
         ))}

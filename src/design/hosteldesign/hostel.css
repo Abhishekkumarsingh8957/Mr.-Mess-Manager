@@ -6,7 +6,7 @@ u:hover{
     background-color: rgb(51, 46, 46);
     height: 100vh;
     width: 100vw;
-    
+   
 }
 .profile-link{
   display: none;
@@ -34,7 +34,7 @@ h3 u{
     transform: translate(-10vh,3vw);
     max-height: 70vh; 
     overflow-y: auto;
-   
+    background-image: url('https://c1.wallpaperflare.com/preview/802/154/558/hostel-youth-hostel.jpg');  
 }
 
 
@@ -46,7 +46,7 @@ h3 u{
     box-sizing: border-box;
     padding: 10px;
     position: sticky;
-    top: 10%; /* Adjust the sticky position */
+    top: 10%; 
     background-color: #f0f0f0;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -111,14 +111,15 @@ h3 u{
     width: 40vw;
     height: fit-content;
     padding: 10px;
-    border-radius: 20px; 
+    border-radius: 15px; 
     border: 2px solid #ccc; 
     margin-top: 10px;
     align-self: center;
     transform: translate(20vh, 0);
     background-color: #f1f1f1; 
     position: relative; 
-    
+    font-family: cursive;
+     
   }
   
   .comment-sender{

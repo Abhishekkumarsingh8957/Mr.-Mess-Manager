@@ -7,6 +7,10 @@
   margin: 20px;
   max-height: 70vh;
   height: 70vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-image: url('https://allthings.how/content/images/wordpress/2021/03/allthings.how-how-to-insert-check-mark-in-excel-checkmark.png');
   overflow-y: scroll;
 }
 

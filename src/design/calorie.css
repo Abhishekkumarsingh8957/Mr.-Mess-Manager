@@ -12,7 +12,11 @@
 .calorie-box {
     width: 80%;
     max-width: 600px;
+    background-image: url('https://www.hdfcergo.com/images/default-source/wellness-corner/13-best-low-calorie-foods_m.jpg');
     margin: 20px auto;
+    /* background-position: center;
+    background-repeat: no-repeat;
+    back */
     padding: 20px;
     background-color: #3498DB;
     border-radius: 10px;
